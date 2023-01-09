@@ -18,6 +18,7 @@ if (currentTime.hour() >= 6 && currentTime.hour() < 12) {
     } else {
     greeting = 'สวัสดีตอนกลางคืน';
 }
+console.log(currentTime.hour())
 
 router.get('/', async (request, response) =>{
     let allPosts = []
