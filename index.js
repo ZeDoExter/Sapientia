@@ -4,13 +4,13 @@ const hbs = require('hbs')
 const dayjs = require('dayjs')
 const utc = require('dayjs/plugin/utc')
 const timezone = require('dayjs/plugin/timezone')
+require('./db')
 const generalRouter = require('./routers/general')
 const postsRouter = require('./routers/posts')
 
 dayjs.extend(utc);
 dayjs.extend(timezone)
 dayjs.tz.setDefault('Asia/Bangkok')
-console.log(dayjs())
 
 const app = express()
 const port = process.env.PORT || 3000;

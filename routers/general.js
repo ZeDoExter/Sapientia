@@ -4,7 +4,7 @@ const db = require('../db')
 
 const router = express.Router()
 
-const currentTime = dayjs();
+const currentTime = dayjs;
 
 let greeting = '';
 if (currentTime.hour() >= 6 && currentTime.hour() < 12) {
