@@ -4,16 +4,17 @@ const db = require('../db')
 
 const router = express.Router()
 
-const currentTime = new Date();
-const currentHour = currentTime.getHours();
+const currentTime = dayjs();
 
 let greeting = '';
-if (currentHour >= 6 && currentHour < 12) {
+if (currentTime.hour() >= 6 && currentTime.hour() < 12) {
     greeting = 'สวัสดีตอนเช้า';
-    } else if (currentHour >= 12 && currentHour < 18) {
+    } else if (currentTime.hour() >= 12 && currentTime.hour() < 14) {
     greeting = 'สวัสดีตอนบ่าย';
-    } else if (currentHour >= 18 && currentHour < 22) {
+    } else if (currentTime.hour() >= 14 && currentTime.hour() < 18) {
     greeting = 'สวัสดีตอนเย็น';
+    } else if (currentTime.hour() >= 18 && currentTime.hour() < 22) {
+        greeting = 'สวัสดีตอนค่ำ';
     } else {
     greeting = 'สวัสดีตอนกลางคืน';
 }
@@ -29,7 +30,7 @@ router.get('/', async (request, response) =>{
             .groupBy('post.id')
             .orderBy('post.id', 'desc')
         allPosts = allPosts.map(post => {
-            const createdAtText = dayjs(post.createdAt).format('D MMM YYYY - HH:mm')
+            const createdAtText = dayjs.tz(post.createdAt).format('D MMM YYYY - HH:mm')
             return { ...post, createdAtText }
         })
     } catch (error) {

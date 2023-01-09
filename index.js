@@ -2,7 +2,15 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 
-const port = process.env.APP_POST ?? process.env.PORT
+const dayjs = require('dayjs')
+const utc = require('dayjs/plugin/utc')
+const timezone = require('dayjs/plugin/timezone')
+
+dayjs.extend(utc);
+dayjs.extend(timezone)
+dayjs.tz.setDefault('Asia/Bangkok')
+
+const port = process.env.PORT || 3000;
 
 const hbs = require('hbs')
 
@@ -17,6 +25,4 @@ app.use('/dist', express.static('dist'))
 app.use('/', generalRouter)
 app.use('/p', postsRouter)
 
-app.listen(port, ()=>{
-    console.log(`Now server is working http://localhost:${port}`)
-})
+app.listen(port, ()=>{})
