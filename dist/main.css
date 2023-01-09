@@ -1,0 +1,74 @@
+@font-face {
+    font-family: 'Mali';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+            url('fonts/mali-v9-thai_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/mali-v9-thai_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* mali-600 - thai_latin */
+@font-face {
+    font-family: 'Mali';
+    font-style: normal;
+    font-weight: 600;
+    src: local(''),
+            url('fonts/mali-v9-thai_latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/mali-v9-thai_latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+html{
+    font-family: 'Mali', sans-serif !important;
+    font-size: 14px !important;
+}
+
+hr{
+    border: 0px dashed lightgray;
+}
+
+.box{
+    background-color: white;
+    border: 1px solid rgb(168 162 158);;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    padding: 10px;
+}
+
+p{
+    line-height: 1.6;
+    margin-top: 0px !important;
+    margin-bottom: 20px !important;
+}
+
+.section{
+    min-height: calc(100vh - 100px);
+    padding: 30px 15px;
+}
+
+.container-box{
+    max-width: 672px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ck.ck-toolbar{
+    border: none !important;
+}
+
+.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused){
+    border: 1px solid rgb(168 162 158) !important;
+    border-radius: 8px !important;
+}
+
+.ck.ck-editor__editable.ck-focused:not(.ck-editor__nested-editable){
+    border: 1px solid rgb(43, 42, 42) !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+}
+
+.ck.ck-editor__editable_inline{
+    padding: 8px !important;
+}
+
+.input:focus, .textarea:focus{
+    border-color: rgb(56 189 248) !important;
+
+}

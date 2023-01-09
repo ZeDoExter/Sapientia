@@ -1,0 +1,12 @@
+console.log('FeelFriends')
+console.log('มาสักที!')
+
+const siteScrollTop = document.querySelector('#ScrollTop')
+
+function scrollTop(){
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+if(!!siteScrollTop){
+    siteScrollTop.addEventListener('click', scrollTop)
+}

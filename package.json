@@ -1,0 +1,31 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "s": "node index.js",
+    "d": "nodemon index.js",
+    "tailwind:css": "postcss input.css -o ./dist/output.css --watch",
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:server": "nodemon index.js",
+    "dev:css": "tailwindcss build input.css -o ./dist/output.css --watch"
+  },
+  "author": "ZeDoExter",
+  "license": "ISC",
+  "dependencies": {
+    "@ckeditor/ckeditor5-upload": "^35.4.0",
+    "dayjs": "^1.11.7",
+    "dotenv": "^16.0.3",
+    "express": "^5.0.0-beta.1",
+    "hbs": "^4.2.0",
+    "knex": "^2.3.0",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.13",
+    "nodemon": "^2.0.20",
+    "npm-run-all": "^4.1.5",
+    "tailwindcss": "^3.2.4"
+  }
+}

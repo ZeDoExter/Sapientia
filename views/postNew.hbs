@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> baseHead customTitle='สร้างโพสต์ใหม่ | ' }}
+<body>
+    {{> sideHeader }}
+    <section class="section">
+        <div class="container-box">
+            <h2 class="text-2xl font-bold">สร้างโพสต์ใหม่</h2>
+            <p>ฝากถามเพื่อนๆได้เลย</p>
+            <form action="/p/new" method="post">
+                <p>
+                    <input class="w-[100%] p-[8px] box appearance-none" type="text" name="title" placeholder="หัวข้อ" value="{{ values.title }}">
+                </p>
+                <p>
+                    <textarea id="content" name="content" placeholder="เนื้อหา">{{ values.content }}</textarea>
+                    <script>
+                        ClassicEditor
+                            .create( document.querySelector( '#content' ))
+                            .catch( error => {
+                                console.error( error );
+                            } );
+                    </script>
+                </p>
+                <p>
+                    <input class="w-[100%] p-[8px] box appearance-none" type="text" name="from" placeholder="จากคุณ" value="{{ values.from }}">
+                </p>
+                <p class="">
+                    <input  class="w-[15px] h-[15px]" id="input-accepted" type="checkbox" name="accepted">
+                    <label for="input-accepted">ข้อความยาวๆที่หลายคนเคยเจอ อาจไม่ต้องอ่านก็ได้ แค่ยอมรับและเข้าใจก็พอ</label>
+                </p>
+                <p>
+                    <button class="bg-white box border-sky-400 inline-block px-[12px] py-[6px] text-sky-700 appearance-none cursor-pointer hover:bg-sky-400 hover:text-white transition ease-out duration-300 delay-150 hover:delay-0" type="submit">สร้างโพสต์</button>
+                </p>
+                {{#if errorMessage }}
+                    <p>{{ errorMessage }}</p>
+                {{/if}}
+            </form>
+        </div>
+    </section>
+    {{> sideFooter }}
+</body>
+</html>

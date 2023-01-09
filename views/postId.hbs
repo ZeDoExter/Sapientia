@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> baseHead customTitle=customTitle}}
+
+<body>
+    {{> sideHeader }}
+    <section class="section">
+        <div class="container-box">
+            {{#if onePost }}
+            <div class="box">
+                <h3 class="text-xl font-bold text-sky-400">{{ onePost.title }}</h3>
+                <p>
+                    <span>{{ onePost.from }} | </span>
+                    <span class="text-neutral-500">{{ onePost.createdAtText }}</span>
+                </p>
+                <div>{{{ onePost.content }}}</div>
+            </div>
+            <hr class="my-4">
+            <form action="/p/{{ onePost.id }}/comment" method="post">
+                <div class="box w-[100%] p-[8px]">
+                    <textarea class="appearance-none" name="content" placeholder="แสดงความคิดเห็น" id="comment" rows="3">{{ values.content }}</textarea>
+                    <script>
+                        ClassicEditor
+                            .create( document.querySelector( '#comment' ))
+                            .catch( error => {
+                                console.error( error );
+                            } );
+                    </script>
+                </div>
+                <p>
+                    <input class="w-[100%] p-[8px] box appearance-none" type="text" name="from" placeholder="จากคุณ" value="{{ values.from }}">
+                </p>
+                <div>
+                    <input id="input-accepted" type="checkbox" name="accepted" class="mb-5">
+                    <label for="input-accepted">ข้อความยาวๆที่หลายคนเคยเจอ อาจไม่ต้องอ่านก็ได้
+                        แค่ยอมรับและเข้าใจก็พอ</label>
+                </div>
+                <p>
+                    <button type="submit" class="bg-white box border-sky-400 inline-block px-[12px] py-[6px] text-sky-700 appearance-none cursor-pointer hover:bg-sky-400 hover:text-white transition ease-out duration-300 delay-150 hover:delay-0">คอมเมนต์</button>
+                </p>
+                {{#if errorMessage }}
+                <p>{{ errorMessage }}</p>
+                {{/if}}
+            </form>
+            <hr class="my-4">
+            {{#if postComments }}
+            <h4>{{ postComments.length }} คอมเมนต์</h4>
+            {{else}}
+            <h4>ยังไม่มีคอมเมนต์</h4>
+            {{/if}}
+            <br>
+            {{#each postComments }}
+            <div class="box">
+                <p>
+                    <span class="text-sky-600">{{ this.from }}</span>
+                    <span> | </span>
+                    <span class="text-neutral-500">{{ this.createdAtText }}</span>
+                </p>
+                {{{ this.content }}}
+            </div>
+            {{/each}}
+            {{else}}
+            <p class="text-center">ไม่พบโพสต์ที่คุณต้องการดู</p>
+            {{/if}}
+        </div>
+    </section>
+    {{> sideFooter }}
+    {{> siteScrollTop }}
+    {{> siteScript }}
+</body>
+
+</html>
