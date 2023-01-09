@@ -14,7 +14,7 @@ async function getPostAndComments(postId){
             .from('post')
             .where('id', +postId)
         onePost = somePost[0]
-        onePost.createdAtText = dayjs().tz(onePost.createdAt).format('D MMM YYYY - HH:mm')
+        onePost.createdAtText = dayjs.tz(onePost.createdAt).format('D MMM YYYY - HH:mm')
 
         // Get post comments
         postComments = await db
@@ -22,7 +22,7 @@ async function getPostAndComments(postId){
             .from('comment')
             .where('postId', +postId)
         postComments = postComments.map(comment => {
-            const createdAtText = dayjs().tz(comment.createdAt).format('D MMM YYYY - HH:mm')
+            const createdAtText = dayjs.tz(comment.createdAt).format('D MMM YYYY - HH:mm')
             return { ...comment, createdAtText }
         })
 

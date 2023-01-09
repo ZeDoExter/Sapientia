@@ -30,7 +30,7 @@ router.get('/', async (request, response) =>{
             .groupBy('post.id')
             .orderBy('post.id', 'desc')
         allPosts = allPosts.map(post => {
-            const createdAtText = dayjs().tz(post.createdAt).format('D MMM YYYY - HH:mm')
+            const createdAtText = dayjs.tz(post.createdAt).format('D MMM YYYY - HH:mm')
             return { ...post, createdAtText }
         })
     } catch (error) {
