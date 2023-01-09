@@ -1,9 +1,17 @@
 const express = require('express')
-const dayjs = require('dayjs')
 const db = require('../db')
 const router = express.Router()
 
-var currentTime = dayjs(new Date())
+const dayjs = require('dayjs')
+const utc = require('dayjs/plugin/utc')
+const timezone = require('dayjs/plugin/timezone')
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
+dayjs.tz.setDefault('Asia/Bangkok')
+
+var currentTime = dayjs(new Date()).clone().tz('Asia/Bangkok')
+// console.log(currentTime)
 
 let greeting = '';
 if (currentTime.hour() >= 6 && currentTime.hour() < 12) {
