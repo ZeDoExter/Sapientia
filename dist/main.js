@@ -1,6 +1,3 @@
-console.log('FeelFriends')
-console.log('มาสักที!')
-
 const siteScrollTop = document.querySelector('#ScrollTop')
 
 function scrollTop(){
